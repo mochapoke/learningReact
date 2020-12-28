@@ -1,5 +1,5 @@
-# learningReact
-리액트 공부를 하고 있습니다.
+# *learningReact*
+리액트를 공부하고 있습니다.
 
 ## *lv.1* Monster roledex
 [홈페이지 구경가기](https://mochapoke.github.io/monster-rol/)
