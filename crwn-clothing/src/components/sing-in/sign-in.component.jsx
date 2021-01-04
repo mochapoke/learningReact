@@ -1,5 +1,7 @@
 import React from 'react';
 
+import FormInput from '../form-input/form-input.component'
+
 import './sing-in.styles.scss'
 
 class SingIn extends React.Component{
@@ -31,23 +33,24 @@ class SingIn extends React.Component{
         <span>Sign in with your email and password</span>
 
         <form onSubmit={this.handleSubmit}>
-          <input 
+          <FormInput 
             name='email' 
             type='email' 
             value={this.state.email} 
-            onChange={this.handleChange}
+            handleChange={this.handleChange}
+            label='email'
             required 
           />
-          <lable>Email</lable>
-          <input 
+
+          <FormInput 
             name='password' 
             type='password' 
             value={this.state.password} 
-            onChange={this.handleChange}
+            handleChange={this.handleChange}
+            label='password'
             required 
           />
-          <lable>Password</lable>
-
+          
           <input type='submit' value='Submit Form' />
         </form>
       </div>
