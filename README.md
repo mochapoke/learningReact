@@ -3,7 +3,7 @@
 [홈페이지 구경가기](https://mochapoke.github.io/monster-rol/)
 
 ## 🌼 무엇을 공부했나
-- 리액트 class 형 구조 
+- class vs function
 - state를 활용한 간단한 검색 기능 등등
 - componentDidMount 을 활용한 API fetch
 - component 쪼개는 연습
