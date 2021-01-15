@@ -44,14 +44,28 @@ export const addCollectionAndDocuments = async (collectionKey, objectToAdd) => {
   const batch = firestore.batch();
   objectToAdd.forEach((obj) => {
     const newDocRef = collectionRef.doc();
-    // unique id 가 생성됨 by fireStore.
-    // 여기서 collectionRef.doc(obj.title); 하면 mens womens 이런거 뜸
     batch.set(newDocRef, obj);
   });
 
   return await batch.commit();
-  // .commit 으로 실행: batch Request
-  // when it succeeds, it will come back with null value
+};
+
+export const convertCollectionsSnapshotToMap = (collections) => {
+  const transformedCollection = collections.docs.map((doc) => {
+    const { title, items } = doc.data();
+
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: doc.id,
+      title,
+      items,
+    };
+  });
+
+  return transformedCollection.reduce((accumulator, collection) => {
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator;
+  }, {});
 };
 
 firebase.initializeApp(config);
