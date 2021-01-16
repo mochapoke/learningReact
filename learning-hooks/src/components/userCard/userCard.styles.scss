@@ -1,0 +1,32 @@
+.card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .card {
+    border-radius: 15px;
+    background-color: rgb(171, 224, 222);
+    width: 50vw;
+    height: 30vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .name {
+      font-weight: bolder;
+      font-size: 80px;
+      color: rgb(47, 49, 47);
+    }
+  }
+  button {
+    width: 40vw;
+    height: 50px;
+    margin: 40px;
+    background-color: rgb(91, 142, 151);
+    border: 1px solid rgba(43, 64, 68, 0.205);
+    color: white;
+    font-weight: 800;
+  }
+}
