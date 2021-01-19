@@ -1,45 +1,45 @@
 import './App.css';
 import { Component } from 'react';
-import {CardList} from './components/card-list/card-list.component';
-import {SearchBox} from './components/search-box/search-box.component';
+import { CardList } from './components/card-list/card-list.component';
+import { SearchBox } from './components/search-box/search-box.component';
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super();
 
     this.state = {
       monsters: [],
-      searchField: ''
-    }
+      searchField: '',
+    };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/users')
-    .then(response => response.json())
-    .then(users => this.setState({monsters: users}))
+      .then((response) => response.json())
+      .then((users) => this.setState({ monsters: users }));
   }
 
   handleChange = (e) => {
-    this.setState({searchField: e.target.value})
-  }
+    this.setState({ searchField: e.target.value });
+  };
 
-  render(){
-    const {monsters, searchField} = this.state;
+  render() {
+    const { monsters, searchField } = this.state;
     // destructing
-    const filteredMonsters = monsters.filter(monster => 
+    const filteredMonsters = monsters.filter((monster) =>
       monster.name.toLowerCase().includes(searchField.toLowerCase())
     );
 
-    return(
-      <div className="App">
+    return (
+      <div className='App'>
         <h1>Monster Roledex</h1>
-        <SearchBox 
-          placeholder='search monsters' 
+        <SearchBox
+          placeholder='search monsters'
           handleChange={this.handleChange}
         />
         <CardList monsters={filteredMonsters}></CardList>
       </div>
-    )
+    );
   }
 }
 
