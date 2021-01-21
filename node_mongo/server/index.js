@@ -57,7 +57,7 @@ app.post('/api/users/login', (req, res) => {
 
       user.generateToken((err, user) => {
         if (err) return res.status(400).send(err);
-        res.cookie('cd', user.token).status(200).json({
+        res.cookie('x_auth', user.token).status(200).json({
           loginSuccess: true,
           userId: user._id,
         });
@@ -67,14 +67,7 @@ app.post('/api/users/login', (req, res) => {
 });
 
 app.get('/api/users/auth', auth, (req, res) => {
-  // 여기까지 미들웨어를 통과해 왔다는 얘기는,
-  // Authentication이 True라는 소리.
-  // false라면 미들웨어에서 걸려져서 error 처리됨
   res.status(200).json({
-    // 정보 제공:
-    // auth.js에서 req에 id를 넣었기때문에 넣을 수 있음\
-    // 어떤페이지에서든지 정보에 접근가능하기때문에
-    // 한번에 다 설정하면 편해짐!
     _id: req.user._id,
     isAudmin: req.user.role === 0 ? false : true,
     isAuth: true,
@@ -87,16 +80,12 @@ app.get('/api/users/auth', auth, (req, res) => {
 });
 
 app.get('/api/users/logout', auth, (req, res) => {
-  User.findOneAndUpdate(
-    { _id: req.user._id },
-    { token: '', tokenExp: '' },
-    (err, doc) => {
-      if (err) return res.json({ success: false, err });
-      return res.status(200).send({
-        success: true,
-      });
-    }
-  );
+  User.findOneAndUpdate({ _id: req.user._id }, { token: '' }, (err, user) => {
+    if (err) return res.json({ success: false, err });
+    return res.status(200).send({
+      success: true,
+    });
+  });
 });
 
 app.listen(5000, () => {
