@@ -10,6 +10,9 @@ const userReucer = (state = initialState, action) => {
     case ActionTypes.REGISTER_USER:
       return { ...state, registerSuccess: action.payload };
 
+    case ActionTypes.AUTH_USER:
+      return { ...state, userData: action.payload };
+
     default:
       return state;
   }
