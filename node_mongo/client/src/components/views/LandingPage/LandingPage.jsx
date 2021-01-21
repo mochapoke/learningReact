@@ -4,9 +4,9 @@ import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 const LandingPage = (props) => {
-  useEffect(() => {
-    axios.get('/api/hello').then((res) => console.log(res.data));
-  }, []);
+  // useEffect(() => {
+  //   axios.get('/api/hello').then((res) => console.log(res.data));
+  // }, []);
 
   const onClickHandler = () => {
     axios.get('/api/users/logout').then((res) => {
