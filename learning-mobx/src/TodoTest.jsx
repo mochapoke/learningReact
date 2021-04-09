@@ -76,6 +76,7 @@ const store = new TodoList([
   new Todo('Get coffee'),
   new Todo('Wrtie simpler code'),
 ]);
+console.log(store);
 
 const TodoTest = () => {
   return (

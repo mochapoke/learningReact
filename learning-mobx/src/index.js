@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import App from './App';
-// import TodoTest from './TodoTest';
-import Timer from './Timer';
+import TodoTest from './TodoTest';
+// import Timer from './Timer';
+// import NewTimer from './NewTimer';
 ReactDOM.render(
   <React.StrictMode>
-    <Timer />
+    <TodoTest />
   </React.StrictMode>,
   document.getElementById('root')
 );
